@@ -1,19 +1,25 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { v4 as uuidv4 } from 'uuid';
+
+export const INITIAL_STATE = {
+  name: '',
+  number: '',
+};
 
 class ContactForm extends Component {
-  state = {
-    name: "",
-    number: "",
-  };
+  nameInputId = uuidv4();
+  numberInputId = uuidv4();
 
-  handleChange = (evt) => {
+  state = { ...INITIAL_STATE };
+
+  handleChange = evt => {
     // console.log(evt.currentTarget.value);
     const { name, value } = evt.currentTarget;
     this.setState({ [name]: value });
   };
 
-  handleSubmit = (evt) => {
+  handleSubmit = evt => {
     evt.preventDefault();
     // console.log(this.state);
     this.props.onSubmit(this.state);
@@ -23,7 +29,7 @@ class ContactForm extends Component {
 
   // const INITIAL__STATE =
   reset = () => {
-    this.setState({ name: "", number: "" });
+    this.setState({ ...INITIAL_STATE });
   };
   // ==================
 
@@ -31,23 +37,25 @@ class ContactForm extends Component {
     return (
       <>
         <form onSubmit={this.handleSubmit}>
-          <label>
+          <label htmlFor={this.nameInputId}>
             Name
             <input
               type="text"
               name="name"
               value={this.state.name}
               onChange={this.handleChange}
+              id={this.nameInputId}
             />
           </label>
 
-          <label>
+          <label htmlFor={this.numberInputId}>
             Number
             <input
               type="tel"
               name="number"
               value={this.state.number}
               onChange={this.handleChange}
+              id={this.numberInputId}
             />
           </label>
 
