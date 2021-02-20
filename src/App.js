@@ -17,17 +17,19 @@ class App extends Component {
   };
 
   formSubmitHandler = ({ name, number }) => {
+    const { contacts } = this.state;
+
     const contact = {
       id: uuidv4(),
       name: name,
       number: number,
     };
 
-    // console.log(contact);
-
-    this.setState(({ contacts }) => ({
-      contacts: [...contacts, contact],
-    }));
+    contacts.find(contact => contact.name === name)
+      ? alert(`${name} is already in contacts`)
+      : this.setState(({ contacts }) => ({
+          contacts: [...contacts, contact],
+        }));
   };
 
   deleteFromContacts = contactListId => {
@@ -37,13 +39,6 @@ class App extends Component {
       ),
     }));
   };
-
-  // handleNameChange = (event) => {
-  //   console.log(event.currentTarget.value);
-
-  //   this.setState({ name: event.currentTarget.value });
-  //   // this.setState({ number: event.currentTarget.value });
-  // };
 
   changeFilter = evt => {
     this.setState({ filter: evt.currentTarget.value });
