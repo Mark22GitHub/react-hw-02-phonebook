@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
+import styles from './ContactForm.module.css';
 
 export const INITIAL_STATE = {
   name: '',
@@ -36,10 +37,11 @@ class ContactForm extends Component {
   render() {
     return (
       <>
-        <form onSubmit={this.handleSubmit}>
+        <form className={styles.contactForm} onSubmit={this.handleSubmit}>
           <label htmlFor={this.nameInputId}>
             Name
             <input
+              className={styles.input}
               type="text"
               name="name"
               value={this.state.name}
@@ -51,6 +53,7 @@ class ContactForm extends Component {
           <label htmlFor={this.numberInputId}>
             Number
             <input
+              className={styles.input}
               type="tel"
               name="number"
               value={this.state.number}
@@ -59,7 +62,9 @@ class ContactForm extends Component {
             />
           </label>
 
-          <button type="submit">Add contact</button>
+          <button className={styles.addContact} type="submit">
+            Add contact
+          </button>
         </form>
       </>
     );
