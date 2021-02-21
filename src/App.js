@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
 import ContactForm from './Components/ContactForm/ContactForm';
 import ContactList from './Components/ContactList/ContactList';
 import { v4 as uuidv4 } from 'uuid';
 import Filter from './Components/Filter/Filter';
-// import styles from './App.css';
 
 class App extends Component {
   state = {
@@ -67,9 +65,5 @@ class App extends Component {
     );
   }
 }
-
-// App.propTypes = {
-
-// };
 
 export default App;

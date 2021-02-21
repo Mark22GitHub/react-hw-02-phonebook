@@ -18,6 +18,9 @@ const Filter = ({ value, onChange }) => {
   );
 };
 
-Filter.propTypes = {};
+Filter.propTypes = {
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+};
 
 export default Filter;

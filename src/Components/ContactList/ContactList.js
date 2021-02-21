@@ -24,6 +24,9 @@ const ContactList = ({ contacts, onDeleteFromContacts }) => {
   );
 };
 
-ContactList.propTypes = {};
+ContactList.propTypes = {
+  contacts: PropTypes.array,
+  onDeleteFromContacts: PropTypes.func,
+};
 
 export default ContactList;
